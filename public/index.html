@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f3ef;
+            color: #2d2d2d;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #ffffffcc;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #eaeaea;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #444;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+            transition: 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            color: #d63031;
+            border-color: #d63031;
+        }
+
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-top: 100px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 60px;
+            position: relative;
+        }
+        
+        .hero-left h1 {
+            font-size: 3.4rem;
+            line-height: 1.15;
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+        
+        .hero-left p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 500px;
+            margin-bottom: 35px;
+            line-height: 1.7;
+        }
+        
+        .hero-btn {
+            padding: 15px 32px;
+            background: #d63031;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 10px;
+            transition: 0.25s ease;
+            display: inline-block;
+        }
+        
+        .hero-btn:hover {
+            background: #1a1a1a;
+        }
+        
+        .hero-right {
+            height: 320px;
+            border-radius: 22px;
+            background: linear-gradient(120deg, #ffd16644, #d6303144);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px);
+            border: 2px solid #00000010;
+            position: relative;
+        }
+        
+        .hero-right::after {
+            content: "";
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            background: radial-gradient(circle, #ffd16655, transparent 70%);
+            right: -40px;
+            top: -40px;
+            border-radius: 50%;
+        }
+        
+        .hero-right span {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            opacity: 0.8;
+        }
+
+        /* Featured Project */
+        .featured {
+            background: white;
+            border-radius: 24px;
+            padding: 60px;
+            margin: 100px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #1a1a1a;
+            transform: rotate(-0.5deg);
+        }
+
+        .featured::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 209, 102, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .featured-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-label {
+            display: inline-block;
+            background: #1a1a1a;
+            color: #ffd166;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
+            transform: rotate(-2deg);
+        }
+
+        .featured h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .featured-desc {
+            font-size: 1.15rem;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            max-width: 800px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 30px 0;
+        }
+
+        .tech-tag {
+            background: #f8f8f8;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #444;
+            border: 2px solid #e0e0e0;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: #1a1a1a;
+            color: #ffd166;
+            border-color: #1a1a1a;
+            transform: translateY(-3px) rotate(2deg);
+        }
+
+        .featured-links {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: #d63031;
+            color: white;
+            border: 3px solid #d63031;
+        }
+
+        .btn-primary:hover {
+            background: #1a1a1a;
+            border-color: #1a1a1a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(214, 48, 49, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #1a1a1a;
+            border: 3px solid #1a1a1a;
+        }
+
+        .btn-secondary:hover {
+            background: #1a1a1a;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Projects Section */
+        .projects-header {
+            margin: 100px 0 50px;
+            position: relative;
+        }
+
+        .projects-header h2 {
+            font-size: 3rem;
+            color: #1a1a1a;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .projects-header h2::before {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 6px;
+            background: #d63031;
+            top: -20px;
+            left: 0;
+            transform: skew(-10deg);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 35px;
+            margin-bottom: 100px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid #f0f0f0;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #d63031, #ffd166);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px) rotate(1deg);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+            border-color: #d63031;
+        }
+
+        .project-type {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #d63031;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .project-card p {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .project-tag {
+            background: #f8f8f8;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: #666;
+            font-weight: 600;
+            border: 1px solid #e8e8e8;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 80px 20px;
+            background: #1a1a1a;
+            margin-top: 100px;
+            border-radius: 30px 30px 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 209, 102, 0.1) 0%, transparent 70%);
+        }
+
+        .footer h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ffd166;
+            font-weight: 900;
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer p {
+            color: #aaa;
+            margin-bottom: 35px;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 35px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 12px 24px;
+            border: 2px solid #444;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .social-links a:hover {
+            border-color: #ffd166;
+            color: #ffd166;
+            transform: translateY(-3px);
+            background: rgba(255, 209, 102, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .featured {
+                padding: 30px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">YourName</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero" id="about">
+            <div class="hero-left">
+                <h1>Hey, I'm Your Name 👋</h1>
+                <p>
+                    CS graduate, now exploring data mining in my master's program.  
+                    I build full-stack apps, ML models, and sometimes random projects  
+                    just for fun.
+                </p>
+                <a href="#work" class="hero-btn">See My Work</a>
+            </div>
+        
+            <div class="hero-right">
+                <span>Creative Developer & ML Explorer</span>
+            </div>
+        </section>
+        
+        <!-- Featured Bachelor's Project -->
+        <section class="featured" id="work">
+            <div class="featured-content">
+                <span class="featured-label">Bachelor's Thesis</span>
+                <h2>Your Bachelor's Project Title</h2>
+                <p class="featured-desc">
+                    A brief but compelling description of what you built for your bachelor's thesis. 
+                    What problem did it solve? What made it interesting? Why are you proud of it? 
+                    Keep it conversational and explain it like you're telling a friend about it.
+                </p>
+                
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">TensorFlow</span>
+                </div>
+
+                <div class="featured-links">
+                    <a href="#" class="btn btn-primary">View Project</a>
+                    <a href="#" class="btn btn-secondary">GitHub Repo</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other Projects -->
+        <div class="projects-header">
+            <h2>Other Stuff I've Built</h2>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-type">Full-Stack Web App</div>
+                <h3>E-commerce Platform</h3>
+                <p>Built a complete online store with payment integration, admin dashboard, and real-time inventory management.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Node.js</span>
+                    <span class="project-tag">Vue.js</span>
+                    <span class="project-tag">MongoDB</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Machine Learning</div>
+                <h3>Sentiment Analysis Tool</h3>
+                <p>NLP model that analyzes customer reviews and classifies sentiment with 89% accuracy on test data.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Python</span>
+                    <span class="project-tag">scikit-learn</span>
+                    <span class="project-tag">NLTK</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Desktop Application</div>
+                <h3>Task Manager Pro</h3>
+                <p>A productivity app with time tracking, project management, and Pomodoro timer built with Electron.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Electron</span>
+                    <span class="project-tag">React</span>
+                    <span class="project-tag">SQLite</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Data Visualization</div>
+                <h3>COVID-19 Tracker</h3>
+                <p>Interactive dashboard showing real-time pandemic statistics with custom visualizations and filters.</p>
+                <div class="project-tags">
+                    <span class="project-tag">D3.js</span>
+                    <span class="project-tag">Flask</span>
+                    <span class="project-tag">Pandas</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Mobile App</div>
+                <h3>Fitness Buddy</h3>
+                <p>Cross-platform mobile app for workout tracking with social features and progress analytics.</p>
+                <div class="project-tags">
+                    <span class="project-tag">React Native</span>
+                    <span class="project-tag">Firebase</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Fun Experiment</div>
+                <h3>Random Project Name</h3>
+                <p>Something I built just for fun or to learn a new technology. Not everything needs to be serious!</p>
+                <div class="project-tags">
+                    <span class="project-tag">WebGL</span>
+                    <span class="project-tag">Three.js</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer / Contact -->
+        <footer class="footer" id="contact">
+            <h2>Let's Connect</h2>
+            <p>Always open to interesting projects and conversations</p>
+            <div class="social-links">
+                <a href="#">GitHub</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Email</a>
+                <a href="#">Twitter</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Subtle parallax on hero
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero-content');
+            const scrolled = window.pageYOffset;
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+                hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.5;
+            }
+        });
+
+        // Add click handlers to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('click', () => {
+                console.log('Project clicked:', card.querySelector('h3').textContent);
+            });
+        });
+
+        // Navbar background on scroll
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(245, 243, 239, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
+            } else {
+                nav.style.background = 'rgba(245, 243, 239, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
