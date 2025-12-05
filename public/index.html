@@ -94,12 +94,29 @@
         }
 
         .hero-title {
-            font-size: 8rem;
+            font-size: 10rem;
             font-weight: 900;
-            color: #d63031;
             letter-spacing: -4px;
             white-space: nowrap;
-            transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+            background: linear-gradient(45deg, #d63031, #e84393, #f0932b, #d63031);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-flow 8s ease infinite;
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes gradient-flow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         /* About content that fades in */
@@ -118,7 +135,6 @@
             text-align: center;
             opacity: 0;
             z-index: 2;
-            transition: opacity 0.1s ease-out;
         }
 
         .about-content h2 {
@@ -396,7 +412,6 @@
             transform: translateX(-50%);
             width: 600px;
             height: 200px;
-            background: radial-gradient(circle, rgba(255, 209, 102, 0.1) 0%, transparent 70%);
         }
 
         .footer h2 {
@@ -602,50 +617,53 @@
                 <a href="#">Twitter</a>
             </div>
         </footer>
-    </div>
 
+    </div>
     <script>
         const heroScrollContainer = document.querySelector('.hero-scroll-container');
         const heroTitle = document.querySelector('.hero-title');
         const aboutContent = document.querySelector('.about-content');
         const nav = document.querySelector('nav');
 
-        function handleScroll() {
-            if (!heroScrollContainer || !heroTitle || !aboutContent) return;
+        let isTicking = false;
 
-            const rect = heroScrollContainer.getBoundingClientRect();
-            const containerHeight = heroScrollContainer.offsetHeight;
-            const viewportHeight = window.innerHeight;
-            const navHeight = nav.offsetHeight;
+        function updateAnimationOnScroll() {
+            if (heroScrollContainer && heroTitle && aboutContent) {
+                const rect = heroScrollContainer.getBoundingClientRect();
+                const containerHeight = heroScrollContainer.offsetHeight;
+                const viewportHeight = window.innerHeight;
+                const navHeight = nav.offsetHeight;
 
-            // Reset if we're above the container
-            if (rect.top > navHeight) {
-                heroTitle.style.transform = 'scale(1)';
-                heroTitle.style.opacity = '1';
-                aboutContent.style.opacity = '0';
-                return;
-            }
+                // Reset if we're above the container
+                if (rect.top > navHeight) {
+                    heroTitle.style.transform = 'scale(1)';
+                    heroTitle.style.opacity = '1';
+                    aboutContent.style.opacity = '0';
+                }
+                // Animate while container is in view
+                else if (rect.bottom > 0) {
+                    // Calculate scroll progress through the container (0 to 1)
+                    const scrollableDistance = containerHeight - viewportHeight;
+                    let progress = Math.abs(rect.top - navHeight) / scrollableDistance;
+                    progress = Math.max(0, Math.min(1, progress));
 
-            // Calculate scroll progress through the container (0 to 1)
-            const scrollableDistance = containerHeight - viewportHeight;
-            let progress = Math.abs(rect.top - navHeight) / scrollableDistance;
-            progress = Math.max(0, Math.min(1, progress));
-
-            // Phase 1: Scale up and fade out "ABOUT" (0% to 50%)
-            if (progress <= 0.5) {
-                const phase1Progress = progress / 0.5;
-                const scale = 1 + (phase1Progress * 3); // Scale from 1 to 4
-                const opacity = 1 - (phase1Progress * 1.2); // Fade out
-                
-                heroTitle.style.transform = `scale(${scale})`;
-                heroTitle.style.opacity = Math.max(0, opacity);
-                aboutContent.style.opacity = '0';
-            }
-            // Phase 2: Fade in about content (50% to 100%)
-            else {
-                heroTitle.style.opacity = '0';
-                const phase2Progress = (progress - 0.5) / 0.5;
-                aboutContent.style.opacity = phase2Progress;
+                    // Phase 1: Scale up and fade out "ABOUT" (0% to 50%)
+                    if (progress <= 0.5) {
+                        const phase1Progress = progress / 0.5;
+                        const scale = 1 + (phase1Progress * 3); // Scale from 1 to 4
+                        const opacity = 1 - (phase1Progress * 1.2); // Fade out
+                        
+                        heroTitle.style.transform = `scale(${scale})`;
+                        heroTitle.style.opacity = Math.max(0, opacity);
+                        aboutContent.style.opacity = '0';
+                    }
+                    // Phase 2: Fade in about content (50% to 100%)
+                    else {
+                        heroTitle.style.opacity = '0';
+                        const phase2Progress = (progress - 0.5) / 0.5;
+                        aboutContent.style.opacity = phase2Progress;
+                    }
+                }
             }
 
             // Navbar shadow
@@ -654,10 +672,19 @@
             } else {
                 nav.style.boxShadow = 'none';
             }
+
+            isTicking = false;
         }
 
-        window.addEventListener('scroll', handleScroll);
-        handleScroll(); // Initial call
+        function onScroll() {
+            if (!isTicking) {
+                window.requestAnimationFrame(updateAnimationOnScroll);
+                isTicking = true;
+            }
+        }
+
+        window.addEventListener('scroll', onScroll);
+        onScroll(); // Initial call to set states
 
         // Smooth scroll for nav links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
