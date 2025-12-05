@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name - Portfolio</title>
     <style>
+        :root {
+            --nav-height: 70px;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -19,15 +23,16 @@
         }
 
         /* Navbar */
-
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: #ffffffcc;
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid #eaeaea;
+            height: var(--nav-height);
             z-index: 1000;
+            transition: box-shadow 0.3s ease;
         }
 
         .nav-container {
@@ -68,126 +73,78 @@
             border-color: #d63031;
         }
 
+        /* Hero/About Scroll Container */
+        .hero-scroll-container {
+            position: relative;
+            height: 300vh; /* Long scroll area for animation */
+            background: #f5f3ef;
+        }
 
+        /* Fixed viewport for the animation */
+        .hero-fixed-viewport {
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            width: 100%;
+            height: calc(100vh - var(--nav-height));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 8rem;
+            font-weight: 900;
+            color: #d63031;
+            letter-spacing: -4px;
+            white-space: nowrap;
+            transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+        }
+
+        /* About content that fades in */
+        .about-content {
+            position: fixed;
+            top: var(--nav-height);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 700px;
+            height: calc(100vh - var(--nav-height));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            opacity: 0;
+            z-index: 2;
+            transition: opacity 0.1s ease-out;
+        }
+
+        .about-content h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+        }
+
+        .about-content p {
+            font-size: 1.3rem;
+            color: #555;
+            line-height: 1.7;
+            max-width: 600px;
+        }
+
+        /* Main content container */
         .container {
+            position: relative;
             max-width: 1100px;
             margin: 0 auto;
             padding: 20px;
-            padding-top: 100px;
+            background: #f5f3ef;
+            z-index: 3;
         }
-
-        /* Hero Section */
-        .hero {
-            min-height: 90vh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 60px;
-            position: relative;
-        }
-        
-        .hero-left h1 {
-            font-size: 3.4rem;
-            line-height: 1.15;
-            font-weight: 900;
-            color: #1a1a1a;
-            margin-bottom: 20px;
-        }
-        
-        .hero-left p {
-            font-size: 1.2rem;
-            color: #555;
-            max-width: 500px;
-            margin-bottom: 35px;
-            line-height: 1.7;
-        }
-        
-        .hero-btn {
-            padding: 15px 32px;
-            background: #d63031;
-            color: white;
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 10px;
-            transition: 0.25s ease;
-            display: inline-block;
-        }
-        
-        .hero-btn:hover {
-            background: #1a1a1a;
-        }
-        
-/* HERO RIGHT — FLOATING ANIMATION */
-
-.hero-right {
-    height: 320px;
-    border-radius: 22px;
-    background: linear-gradient(120deg, #ffd16644, #d6303144);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(6px);
-    border: 2px solid #00000010;
-    position: relative;
-
-    /* ANIMAȚIA DE PLUTIRE */
-    animation: floatCard 4.5s ease-in-out infinite;
-    transform-style: preserve-3d;
-}
-
-/* glowing blob */
-.hero-right::after {
-    content: "";
-    position: absolute;
-    width: 160px;
-    height: 160px;
-    right: -40px;
-    top: -40px;
-    border-radius: 50%;
-    animation: blobMove 6s ease-in-out infinite;
-}
-
-/* text */
-.hero-right span {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #1a1a1a;
-    opacity: 0.8;
-    transform: translateZ(20px);
-}
-
-/* KEYFRAMES — floating movement */
-@keyframes floatCard {
-    0% {
-        transform: translateY(0px) scale(1);
-    }
-    50% {
-        transform: translateY(-18px) scale(1.03);
-    }
-    100% {
-        transform: translateY(0px) scale(1);
-    }
-}
-
-/* second subtle animation */
-@keyframes blobMove {
-    0% {
-        transform: translate(0,0) scale(1);
-    }
-    50% {
-        transform: translate(12px, -18px) scale(1.1);
-    }
-    100% {
-        transform: translate(0,0) scale(1);
-    }
-}
-
-/* OPTIONAL — interacțiune cu mouse-ul (efect 3D) */
-.hero-right:hover {
-    transform: translateY(-12px) scale(1.05);
-    transition: 0.4s ease;
-}
-
 
         /* Featured Project */
         .featured {
@@ -488,8 +445,16 @@
         }
 
         @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
+            .hero-title {
+                font-size: 4rem;
+            }
+
+            .about-content h2 {
+                font-size: 2rem;
+            }
+
+            .about-content p {
+                font-size: 1.1rem;
             }
             
             .featured {
@@ -503,35 +468,32 @@
     </style>
 </head>
 <body>
-
     <nav>
         <div class="nav-container">
             <a href="#" class="logo">YourName</a>
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
+                <li><a href="#work">Work</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
+    <!-- Hero/About Scrollytelling Section -->
+    <section class="hero-scroll-container">
+        <div class="hero-fixed-viewport">
+            <h1 class="hero-title">ABOUT ME</h1>
+        </div>
+        <div class="about-content">
+            <h2>Hey, I'm Bejenaru Matei</h2>
+            <p>
+                Fresh CS grad now deep in a master's program focused on data mining. 
+                I build full-stack apps, train ML models, and create tools that solve actual problems. 
+                Sometimes I build things just to see if I can.
+            </p>
+        </div>
+    </section>
+
     <div class="container">
-        <!-- Hero Section -->
-        <section class="hero" id="about">
-            <div class="hero-left">
-                <h1>Hey, I'm Your Name 👋</h1>
-                <p>
-                    CS graduate, now exploring data mining in my master's program.  
-                    I build full-stack apps, ML models, and sometimes random projects  
-                    just for fun.
-                </p>
-                <a href="#work" class="hero-btn">See My Work</a>
-            </div>
-        
-            <div class="hero-right">
-                <span>Creative Developer & ML Explorer</span>
-            </div>
-        </section>
-        
         <!-- Featured Bachelor's Project -->
         <section class="featured" id="work">
             <div class="featured-content">
@@ -643,6 +605,60 @@
     </div>
 
     <script>
+        const heroScrollContainer = document.querySelector('.hero-scroll-container');
+        const heroTitle = document.querySelector('.hero-title');
+        const aboutContent = document.querySelector('.about-content');
+        const nav = document.querySelector('nav');
+
+        function handleScroll() {
+            if (!heroScrollContainer || !heroTitle || !aboutContent) return;
+
+            const rect = heroScrollContainer.getBoundingClientRect();
+            const containerHeight = heroScrollContainer.offsetHeight;
+            const viewportHeight = window.innerHeight;
+            const navHeight = nav.offsetHeight;
+
+            // Reset if we're above the container
+            if (rect.top > navHeight) {
+                heroTitle.style.transform = 'scale(1)';
+                heroTitle.style.opacity = '1';
+                aboutContent.style.opacity = '0';
+                return;
+            }
+
+            // Calculate scroll progress through the container (0 to 1)
+            const scrollableDistance = containerHeight - viewportHeight;
+            let progress = Math.abs(rect.top - navHeight) / scrollableDistance;
+            progress = Math.max(0, Math.min(1, progress));
+
+            // Phase 1: Scale up and fade out "ABOUT" (0% to 50%)
+            if (progress <= 0.5) {
+                const phase1Progress = progress / 0.5;
+                const scale = 1 + (phase1Progress * 3); // Scale from 1 to 4
+                const opacity = 1 - (phase1Progress * 1.2); // Fade out
+                
+                heroTitle.style.transform = `scale(${scale})`;
+                heroTitle.style.opacity = Math.max(0, opacity);
+                aboutContent.style.opacity = '0';
+            }
+            // Phase 2: Fade in about content (50% to 100%)
+            else {
+                heroTitle.style.opacity = '0';
+                const phase2Progress = (progress - 0.5) / 0.5;
+                aboutContent.style.opacity = phase2Progress;
+            }
+
+            // Navbar shadow
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Initial call
+
         // Smooth scroll for nav links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -654,34 +670,11 @@
             });
         });
 
-        // Subtle parallax on hero
-        let lastScroll = 0;
-        window.addEventListener('scroll', () => {
-            const hero = document.querySelector('.hero-content');
-            const scrolled = window.pageYOffset;
-            if (hero && scrolled < window.innerHeight) {
-                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
-                hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.5;
-            }
-        });
-
-        // Add click handlers to project cards
+        // Project card clicks
         document.querySelectorAll('.project-card').forEach(card => {
             card.addEventListener('click', () => {
                 console.log('Project clicked:', card.querySelector('h3').textContent);
             });
-        });
-
-        // Navbar background on scroll
-        const nav = document.querySelector('nav');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                nav.style.background = 'rgba(245, 243, 239, 0.98)';
-                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
-            } else {
-                nav.style.background = 'rgba(245, 243, 239, 0.95)';
-                nav.style.boxShadow = 'none';
-            }
         });
     </script>
 </body>
