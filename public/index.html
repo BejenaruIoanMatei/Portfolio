@@ -133,6 +133,7 @@
             align-items: center;
             opacity: 0;
             z-index: 2;
+            pointer-events: none;
         }
 
         .about-inner {
@@ -212,7 +213,7 @@
             margin: 0 auto;
             padding: 20px;
             background: #f5f3ef;
-            z-index: 3;
+            z-index: 10;
         }
 
         /* Featured Project */
@@ -449,7 +450,7 @@
         /* Footer */
         .footer {
             text-align: center;
-            padding: 100px 20px 60px;
+            padding: 40px 20px 40px;
             background: #f5f3ef;
             margin-top: 150px;
             position: relative;
@@ -531,10 +532,19 @@
 
         .footer-bottom {
             margin-top: 60px;
-            padding-top: 30px;
-            border-top: 1px solid #ddd;
+            padding-top: 40px;
+            border-top: 1px solid #e0e0e0;
             color: #999;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-bottom::before {
+            content: '✦';
+            display: block;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #d63031;
+            animation: spin 20s linear infinite;
         }
 
         @media (max-width: 968px) {
@@ -782,6 +792,9 @@
                         const phase2Progress = (progress - 0.5) / 0.5;
                         aboutContent.style.opacity = phase2Progress;
                     }
+                } else if (rect.bottom <= 0) {
+                    heroTitle.style.opacity = '0';
+                    aboutContent.style.opacity = '0';
                 }
             }
 
