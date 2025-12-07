@@ -1024,40 +1024,44 @@
 
         if (isTouch) {
             const projectCards = [...document.querySelectorAll('.project-card')];
-
+            
             function updateActiveCard() {
-                const viewportCenter = window.innerHeight / 2;
-                const TRIGGER_HALF_HEIGHT = 45; // zona totală = 70px
-
-                const triggerTop = viewportCenter - TRIGGER_HALF_HEIGHT;
-                const triggerBottom = viewportCenter + TRIGGER_HALF_HEIGHT;
-
+                const viewportHeight = window.innerHeight;
+            
+                // zonă de trigger MARE pe mobile
+                const triggerTop = viewportHeight * 0.40;   // 40% din ecran
+                const triggerBottom = viewportHeight * 0.60; // 60% din ecran
+                const viewportCenter = viewportHeight / 2;
+            
                 let activeCard = null;
-                let minOverlapDistance = Infinity;
-
+                let closestDistance = Infinity;
+            
                 projectCards.forEach(card => {
                     const rect = card.getBoundingClientRect();
                     const cardCenter = rect.top + rect.height / 2;
-
-                    // Dacă centrul cardului este în trigger-zone, e candidat
+            
+                    // intră în zona de trigger?
                     if (cardCenter >= triggerTop && cardCenter <= triggerBottom) {
+            
                         const dist = Math.abs(cardCenter - viewportCenter);
-
-                        if (dist < minOverlapDistance) {
-                            minOverlapDistance = dist;
+            
+                        // găsește cardul cel mai apropiat de centru
+                        if (dist < closestDistance) {
+                            closestDistance = dist;
                             activeCard = card;
                         }
                     }
                 });
-
-                // Reset
+            
+                // resetăm toate cardurile
                 projectCards.forEach(c => c.classList.remove('mobile-active'));
-
-                // Activează doar cardul care se află în içuța de trigger
+            
+                // activăm doar unul
                 if (activeCard) {
                     activeCard.classList.add('mobile-active');
                 }
             }
+            
 
             window.addEventListener('scroll', updateActiveCard);
             window.addEventListener('resize', updateActiveCard);
