@@ -1014,9 +1014,15 @@
 
         document.querySelectorAll('.project-card').forEach(card => {
             card.addEventListener('click', () => {
+                
+                // dacă este touch device → dezactivează click-ul
+                if (isTouch) return;
+        
+                // aici rămâne doar comportamentul de desktop
                 console.log('Project clicked:', card.querySelector('h3').textContent);
             });
         });
+        
 
         // Detect touch device (mobile/tablet)
         // Detect touch device (mobile/tablet)
@@ -1024,7 +1030,7 @@
 
         if (isTouch) {
             const projectCards = [...document.querySelectorAll('.project-card')];
-            
+
             function updateActiveCard() {
                 const viewportHeight = window.innerHeight;
             
