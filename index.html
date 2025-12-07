@@ -625,13 +625,78 @@
         }
 
         @media (max-width: 768px) {
+
             .hero-title {
                 font-size: 4rem;
+            }
+
+            .about-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-left h2 {
+                font-size: 2.5rem;
+            }
+
+            .about-left p {
+                font-size: 1.1rem;
             }
 
             .about-cta {
                 display: none;
             }
+
+            .photo-container {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .featured {
+                padding: 30px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+            
+            .nav-container {
+                justify-content: center;
+            }
+            
+            .hero-fixed-viewport {
+                height: calc(100vh - var(--nav-height));
+                padding: 0 20px;
+            }
+            
+            .about-inner {
+                text-align: center;
+            }
+            
+            .about-right {
+                order: -1;
+            }
+            
+            .featured {
+                margin: 60px 0;
+            }
+            
+            .featured h2 {
+                font-size: 2rem;
+            }
+            
+            .footer h2 {
+                font-size: 2.2rem;
+            }
+            
+            .footer p {
+                font-size: 1rem;
+            }
+            
         }
 
         @media (max-width: 480px) {
@@ -906,28 +971,43 @@
         });
 
         // Detect touch device (mobile/tablet)
+        // Detect touch device (mobile/tablet)
         const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
         if (isTouch) {
-            const projectCards = document.querySelectorAll('.project-card');
+            const projectCards = [...document.querySelectorAll('.project-card')];
 
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    const centerTrigger =
-                        entry.intersectionRatio > 0.55; // fires when card is centered
+            function updateActiveCard() {
+                const viewportCenter = window.innerHeight / 2;
+                let closestCard = null;
+                let closestDistance = Infinity;
 
-                    if (centerTrigger) {
-                        entry.target.classList.add('mobile-active');
-                    } else {
-                        entry.target.classList.remove('mobile-active');
+                projectCards.forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    const cardCenter = rect.top + rect.height / 2;
+                    const distance = Math.abs(cardCenter - viewportCenter);
+
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestCard = card;
                     }
                 });
-            }, {
-                threshold: [0, 0.3, 0.55, 1]
-            });
 
-            projectCards.forEach(card => observer.observe(card));
+                // Remove all animations
+                projectCards.forEach(card => card.classList.remove('mobile-active'));
+
+                // Add animation only to the closest one
+                if (closestCard) {
+                    closestCard.classList.add('mobile-active');
+                }
+            }
+
+            window.addEventListener('scroll', updateActiveCard);
+            window.addEventListener('resize', updateActiveCard);
+
+            updateActiveCard(); // initial call
         }
+
 
     </script>
 </body>
