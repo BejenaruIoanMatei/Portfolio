@@ -1012,6 +1012,9 @@
             });
         });
 
+        // Detect touch device (mobile/tablet)
+        const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
         document.querySelectorAll('.project-card').forEach(card => {
             card.addEventListener('click', () => {
                 
@@ -1025,8 +1028,6 @@
         
 
         // Detect touch device (mobile/tablet)
-        // Detect touch device (mobile/tablet)
-        const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
         if (isTouch) {
             const projectCards = [...document.querySelectorAll('.project-card')];
@@ -1061,7 +1062,9 @@
             
                 // resetăm toate cardurile
                 projectCards.forEach(c => c.classList.remove('mobile-active'));
-            
+                
+                if (!activeCard) return;
+                
                 // activăm doar unul
                 if (activeCard) {
                     activeCard.classList.add('mobile-active');
