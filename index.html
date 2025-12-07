@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Name - Portfolio</title>
+    <title>Matei Bejenaru - Portfolio</title>
     <style>
         :root {
             --nav-height: 70px;
@@ -538,7 +538,6 @@
             animation: spin 20s linear infinite;
         }
 
-        /* MOBILE SIMULATED HOVER CLASS */
         .project-card.mobile-active {
             transform: translateY(-8px) rotate(1deg);
             box-shadow: 0 12px 35px rgba(0,0,0,0.12);
@@ -785,7 +784,7 @@
 <body>
     <nav>
         <div class="nav-container">
-            <a href="#" class="logo">Name</a>
+            <a href="#" class="logo">Matei Bejenaru</a>
             <ul class="nav-links">
                 <li><a href="#work">Work</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -800,11 +799,10 @@
         <div class="about-content">
             <div class="about-inner">
                 <div class="about-left">
-                    <h2>Hey, I'm Name</h2>
+                    <h2>Hey, I'm Matei Bejenaru</h2>
                     <p>
-                        Fresh CS grad now deep in a master's program focused on data mining. 
-                        I build full-stack apps, train ML models, and create tools that solve actual problems. 
-                        Sometimes I build things just to see if I can.
+                        Computer Science graduate, currently pursuing a Master's in Data Mining.
+                        I develop full-stack applications and work with data to extract meaningful insights.
                     </p>
                     <div class="about-cta">
                         <a href="#work" class="btn btn-primary">View My Work</a>
@@ -813,7 +811,7 @@
                 </div>
                 <div class="about-right">
                     <div class="photo-container">
-                        <div class="photo-placeholder">MB</div>
+                        <img src="images/poza.jpg" alt="Matei Bejenaru Profile Picture">
                     </div>
                 </div>
             </div>
@@ -824,94 +822,120 @@
         <section class="featured">
             <div class="featured-content">
                 <span class="featured-label">Bachelor's Thesis</span>
-                <h2>Your Bachelor's Project Title</h2>
+                <h2>AI-Powered Flower Classification & Virtual Gardening</h2>
                 <p class="featured-desc">
-                    A brief but compelling description of what you built for your bachelor's thesis. 
-                    What problem did it solve? What made it interesting? Why are you proud of it? 
-                    Keep it conversational and explain it like you're telling a friend about it.
-                </p>
+                    Florli is a Django web application that combines artificial intelligence with gamified gardening. 
+                    Users upload flower photos for AI classification (powered by a CNN with transfer learning using EfficientNet), 
+                    unlock plants in their virtual garden, and share knowledge with the community.
+                </p>                
                 
                 <div class="tech-stack">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">React</span>
-                    <span class="tech-tag">PostgreSQL</span>
-                    <span class="tech-tag">Docker</span>
-                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">Python (Django)</span>
+                    <span class="tech-tag">TensorFlow/Keras</span>
+                    <span class="tech-tag">CNN (EfficientNet)</span>
+                    <span class="tech-tag">Computer Vision</span>
+                    <span class="tech-tag">Scikit-Learn</span>
+                    <span class="tech-tag">Data Visualization</span>
+                    <span class="tech-tag">Gamification</span>
+                    <span class="tech-tag">Bootstrap</span>
                 </div>
 
                 <div class="featured-links">
-                    <a href="#" class="btn btn-primary">View Project</a>
-                    <a href="#" class="btn btn-secondary">GitHub Repo</a>
+                    <a href="https://github.com/BejenaruIoanMatei/AI-PoweredFlowerClassification" class="btn btn-primary">GitHub Repo</a>
                 </div>
             </div>
         </section>
 
         <div class="projects-header">
-            <h2>Other Stuff I've Built</h2>
+            <h2>Notable Projects</h2>
         </div>
 
         <div class="projects-grid">
             <div class="project-card">
-                <div class="project-type">Full-Stack Web App</div>
-                <h3>E-commerce Platform</h3>
-                <p>Built a complete online store with payment integration, admin dashboard, and real-time inventory management.</p>
+                <div class="project-type">Full-Stack / Data-Driven App</div>
+                <h3>Game Recommender</h3>
+                <p>
+                  GameRecommender is a full-stack project featuring a FastAPI backend that delivers game recommendations and a Spring Boot frontend client. 
+                  It implements two recommendation algorithms (Nearest Neighbors and Cosine Similarity) trained on game metadata.
+                </p>                
                 <div class="project-tags">
-                    <span class="project-tag">Node.js</span>
-                    <span class="project-tag">Vue.js</span>
-                    <span class="project-tag">MongoDB</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-type">Machine Learning</div>
-                <h3>Sentiment Analysis Tool</h3>
-                <p>NLP model that analyzes customer reviews and classifies sentiment with 89% accuracy on test data.</p>
-                <div class="project-tags">
-                    <span class="project-tag">Python</span>
-                    <span class="project-tag">scikit-learn</span>
+                    <span class="project-tag">Python (FastAPI)</span>
+                    <span class="project-tag">Java (Spring Boot)</span>
+                    <span class="project-tag">Scikit-Learn</span>
                     <span class="project-tag">NLTK</span>
+                    <span class="project-tag">Pandas</span>
+                    <span class="project-tag">NumPy</span>
+                    <span class="project-tag">Data Visualization</span>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-type">Desktop Application</div>
-                <h3>Task Manager Pro</h3>
-                <p>A productivity app with time tracking, project management, and Pomodoro timer built with Electron.</p>
+                <h3>Movie App</h3>
+                <p>
+                    MovieApp is a Python-based client-server application with a Tkinter GUI that allows users to search for movies, view ratings, trailers, and reviews. 
+                    It integrates a local SQLite database with the TMDB API to fetch movie information dynamically, ensuring quick access for repeated queries.
+                </p>
                 <div class="project-tags">
-                    <span class="project-tag">Electron</span>
-                    <span class="project-tag">React</span>
+                    <span class="project-tag">Python</span>
+                    <span class="project-tag">Tkinter</span>
+                    <span class="project-tag">API Integration (TMDB)</span>
+                    <span class="project-tag">Client-Server Architecture</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-type">Server-Side Application</div>
+                <h3>Rail Sync</h3>
+                <p>
+                    Rail Sync is a server-side application that provides registered clients with real-time train information including schedules, departure/arrival status, delays, and arrival estimates. 
+                    Built with a robust TCP-based architecture and local database storage, it efficiently manages and monitors train schedules through multi-threaded connection handling.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">C/C++</span>
+                    <span class="project-tag">TCP Sockets</span>
                     <span class="project-tag">SQLite</span>
+                    <span class="project-tag">Multi-threading</span>
+                    <span class="project-tag">Client-Server Architecture</span>
+                    <span class="project-tag">Real-Time Data</span>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="project-type">Data Visualization</div>
-                <h3>COVID-19 Tracker</h3>
-                <p>Interactive dashboard showing real-time pandemic statistics with custom visualizations and filters.</p>
+                <div class="project-type">Web Application / Deep Learning</div>
+                <h3>Fake Spotter</h3>
+                <p>
+                    Fake Spotter is a Django-based web application that detects deepfake images using convolutional neural networks (CNNs).
+                    The system performs real-time image classification powered by models trained with both PyTorch and TensorFlow, including ResNet18 and InceptionV3 architectures, 
+                </p>
                 <div class="project-tags">
-                    <span class="project-tag">D3.js</span>
-                    <span class="project-tag">Flask</span>
-                    <span class="project-tag">Pandas</span>
+                    <span class="project-tag">Python (Django)</span>
+                    <span class="project-tag">TensorFlow</span>
+                    <span class="project-tag">CNN</span>
+                    <span class="project-tag">Deep Learning</span>
+                    <span class="project-tag">Computer Vision</span>
+                    <span class="project-tag">Image Classification</span>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="project-type">Mobile App</div>
-                <h3>Fitness Buddy</h3>
-                <p>Cross-platform mobile app for workout tracking with social features and progress analytics.</p>
+                <div class="project-type">Full-Stack Web App</div>
+                <h3>Chess Advisor</h3>
+                <p>To be added soon.</p>
                 <div class="project-tags">
-                    <span class="project-tag">React Native</span>
-                    <span class="project-tag">Firebase</span>
+                    <span class="project-tag">Python (FastAPI)</span>
+                    <span class="project-tag">PHP</span>
+                    <span class="project-tag">React</span>
+                    <span class="project-tag">Typescript</span>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="project-type">Fun Experiment</div>
-                <h3>Random Project Name</h3>
-                <p>Something I built just for fun or to learn a new technology. Not everything needs to be serious!</p>
+                <div class="project-type">Full-Stack Web App</div>
+                <h3>Marketplace</h3>
+                <p>To be added soon.</p>
                 <div class="project-tags">
-                    <span class="project-tag">WebGL</span>
-                    <span class="project-tag">Three.js</span>
+                    <span class="project-tag">PHP</span>
                 </div>
             </div>
         </div>
@@ -923,15 +947,13 @@
                     Have a project in mind or just want to chat about tech, data mining, or random ideas? 
                     I'm always open to interesting conversations.
                 </p>
-                <a href="mailto:your.email@example.com" class="footer-email">your.email@example.com</a>
+                <a href="mailto:bagunblunt20@gmail.com" class="footer-email">MateiBejenaru@gmail.com</a>
                 <div class="social-links">
-                    <a href="#">GitHub</a>
-                    <a href="#">LinkedIn</a>
-                    <a href="#">Twitter</a>
-                    <a href="#">Instagram</a>
+                    <a href="https://github.com/BejenaruIoanMatei">GitHub</a>
+                    <a href="https://www.linkedin.com/in/matei-bejenaru-525a05369/">LinkedIn</a>
                 </div>
                 <div class="footer-bottom">
-                    © 2024 Bejenaru Matei. Built with curiosity and coffee.
+                    © 2025 Bejenaru Matei. Built with curiosity and coffee.
                 </div>
             </div>
         </footer>
@@ -1012,7 +1034,6 @@
             });
         });
 
-        // Detect touch device (mobile/tablet)
         const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
         if (!isTouch) {
@@ -1022,18 +1043,14 @@
                 });
             });
         }
-        
-        // Detect touch device (mobile/tablet)
 
         if (isTouch) {
             const projectCards = [...document.querySelectorAll('.project-card')];
 
             function updateActiveCard() {
                 const viewportHeight = window.innerHeight;
-            
-                // zonă de trigger MARE pe mobile
-                const triggerTop = viewportHeight * 0.40;   // 40% din ecran
-                const triggerBottom = viewportHeight * 0.60; // 60% din ecran
+                const triggerTop = viewportHeight * 0.40;
+                const triggerBottom = viewportHeight * 0.60;
                 const viewportCenter = viewportHeight / 2;
             
                 let activeCard = null;
@@ -1043,12 +1060,9 @@
                     const rect = card.getBoundingClientRect();
                     const cardCenter = rect.top + rect.height / 2;
             
-                    // intră în zona de trigger?
                     if (cardCenter >= triggerTop && cardCenter <= triggerBottom) {
             
                         const dist = Math.abs(cardCenter - viewportCenter);
-            
-                        // găsește cardul cel mai apropiat de centru
                         if (dist < closestDistance) {
                             closestDistance = dist;
                             activeCard = card;
@@ -1056,22 +1070,19 @@
                     }
                 });
             
-                // resetăm toate cardurile
                 projectCards.forEach(c => c.classList.remove('mobile-active'));
                 
                 if (!activeCard) return;
 
-                // activăm doar unul
                 if (activeCard) {
                     activeCard.classList.add('mobile-active');
                 }
             }
             
-
             window.addEventListener('scroll', updateActiveCard);
             window.addEventListener('resize', updateActiveCard);
 
-            updateActiveCard(); // initial
+            updateActiveCard();
         }
     </script>
 </body>
