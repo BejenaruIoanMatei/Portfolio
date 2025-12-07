@@ -1015,18 +1015,14 @@
         // Detect touch device (mobile/tablet)
         const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('click', () => {
-                
-                // dacă este touch device → dezactivează click-ul
-                if (isTouch) return;
-        
-                // aici rămâne doar comportamentul de desktop
-                console.log('Project clicked:', card.querySelector('h3').textContent);
+        if (!isTouch) {
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    console.log('Project clicked (desktop):', card.querySelector('h3').textContent);
+                });
             });
-        });
+        }
         
-
         // Detect touch device (mobile/tablet)
 
         if (isTouch) {
@@ -1064,7 +1060,7 @@
                 projectCards.forEach(c => c.classList.remove('mobile-active'));
                 
                 if (!activeCard) return;
-                
+
                 // activăm doar unul
                 if (activeCard) {
                     activeCard.classList.add('mobile-active');
