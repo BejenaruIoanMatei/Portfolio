@@ -551,6 +551,7 @@
 
 
         @media (max-width: 968px) {
+
             .hero-title {
                 font-size: 6rem;
             }
@@ -699,6 +700,53 @@
             
         }
 
+        @media (max-width: 768px) {
+
+            .featured {
+                padding: 24px !important;
+                margin: 40px 0 !important;
+                border-radius: 18px;
+            }
+        
+            .featured-label {
+                font-size: 0.7rem;
+                padding: 8px 18px;
+                margin-bottom: 15px;
+            }
+        
+            .featured h2 {
+                font-size: 1.6rem !important;
+                margin-bottom: 12px !important;
+                line-height: 1.2;
+            }
+        
+            .featured-desc {
+                font-size: 0.95rem !important;
+                margin-bottom: 20px !important;
+                line-height: 1.5;
+            }
+        
+            .tech-stack {
+                gap: 8px !important;
+                margin: 20px 0 !important;
+            }
+        
+            .tech-tag {
+                padding: 6px 14px !important;
+                font-size: 0.75rem !important;
+            }
+        
+            .featured-links {
+                margin-top: 20px !important;
+                gap: 10px !important;
+            }
+        
+            .btn {
+                padding: 10px 20px !important;
+                font-size: 0.85rem !important;
+            }
+        }
+        
         @media (max-width: 480px) {
 
             .hero-title {
@@ -979,7 +1027,7 @@
 
             function updateActiveCard() {
                 const viewportCenter = window.innerHeight / 2;
-                const TRIGGER_HALF_HEIGHT = 35; // zona totală = 70px
+                const TRIGGER_HALF_HEIGHT = 45; // zona totală = 70px
 
                 const triggerTop = viewportCenter - TRIGGER_HALF_HEIGHT;
                 const triggerBottom = viewportCenter + TRIGGER_HALF_HEIGHT;
