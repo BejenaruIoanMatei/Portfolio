@@ -399,6 +399,13 @@
             border-color: #d63031;
         }
 
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
         .project-type {
             font-size: 0.7rem;
             text-transform: uppercase;
@@ -406,6 +413,31 @@
             color: #d63031;
             margin-bottom: 12px;
             font-weight: 700;
+        }
+
+        .github-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .github-link:hover {
+            background: #d63031;
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .github-link svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
         }
 
         .project-card h3 {
@@ -837,7 +869,6 @@
                     <span class="tech-tag">Scikit-Learn</span>
                     <span class="tech-tag">Data Visualization</span>
                     <span class="tech-tag">Gamification</span>
-                    <span class="tech-tag">Bootstrap</span>
                 </div>
 
                 <div class="featured-links">
@@ -852,7 +883,14 @@
 
         <div class="projects-grid">
             <div class="project-card">
-                <div class="project-type">Full-Stack / Data-Driven App</div>
+                <div class="project-header">
+                    <div class="project-type">Full-Stack / Data-Driven App</div>
+                    <a href="https://github.com/BejenaruIoanMatei/GameRecommender" class="github-link" target="_blank" onclick="event.stopPropagation();">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
                 <h3>Game Recommender</h3>
                 <p>
                   GameRecommender is a full-stack project featuring a FastAPI backend that delivers game recommendations and a Spring Boot frontend client. 
@@ -870,7 +908,14 @@
             </div>
 
             <div class="project-card">
-                <div class="project-type">Desktop Application</div>
+                <div class="project-header">
+                    <div class="project-type">Desktop Application</div>
+                    <a href="https://github.com/BejenaruIoanMatei/MovieApp" class="github-link" target="_blank" onclick="event.stopPropagation();">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
                 <h3>Movie App</h3>
                 <p>
                     MovieApp is a Python-based client-server application with a Tkinter GUI that allows users to search for movies, view ratings, trailers, and reviews. 
@@ -885,7 +930,14 @@
             </div>
 
             <div class="project-card">
-                <div class="project-type">Server-Side Application</div>
+                <div class="project-header">
+                    <div class="project-type">Server-Side Application</div>
+                    <a href="https://github.com/BejenaruIoanMatei/RailSync" class="github-link" target="_blank" onclick="event.stopPropagation();">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
                 <h3>Rail Sync</h3>
                 <p>
                     Rail Sync is a server-side application that provides registered clients with real-time train information including schedules, departure/arrival status, delays, and arrival estimates. 
@@ -902,7 +954,14 @@
             </div>
 
             <div class="project-card">
-                <div class="project-type">Web Application / Deep Learning</div>
+                <div class="project-header">
+                    <div class="project-type">Web Application / Deep Learning</div>
+                    <a href="https://github.com/BejenaruIoanMatei/FakeSpotter" class="github-link" target="_blank" onclick="event.stopPropagation();">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
                 <h3>Fake Spotter</h3>
                 <p>
                     Fake Spotter is a Django-based web application that detects deepfake images using convolutional neural networks (CNNs).
@@ -919,7 +978,14 @@
             </div>
 
             <div class="project-card">
-                <div class="project-type">Full-Stack Web App</div>
+                <div class="project-header">
+                    <div class="project-type">Full-Stack Web Application</div>
+                    <a href="https://github.com/BejenaruIoanMatei/ChessAdvisor" class="github-link" target="_blank" onclick="event.stopPropagation();">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
                 <h3>Chess Advisor</h3>
                 <p>To be added soon.</p>
                 <div class="project-tags">
@@ -931,7 +997,14 @@
             </div>
 
             <div class="project-card">
-                <div class="project-type">Full-Stack Web App</div>
+                <div class="project-header">
+                    <div class="project-type">Full-Stack Web Application</div>
+                    <a href="https://github.com/BejenaruIoanMatei/MarketplacePHP" class="github-link" target="_blank" onclick="event.stopPropagation();">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
                 <h3>Marketplace</h3>
                 <p>To be added soon.</p>
                 <div class="project-tags">
