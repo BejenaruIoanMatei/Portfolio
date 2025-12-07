@@ -979,36 +979,43 @@
 
             function updateActiveCard() {
                 const viewportCenter = window.innerHeight / 2;
-                let closestCard = null;
-                let closestDistance = Infinity;
+                const TRIGGER_HALF_HEIGHT = 35; // zona totală = 70px
+
+                const triggerTop = viewportCenter - TRIGGER_HALF_HEIGHT;
+                const triggerBottom = viewportCenter + TRIGGER_HALF_HEIGHT;
+
+                let activeCard = null;
+                let minOverlapDistance = Infinity;
 
                 projectCards.forEach(card => {
                     const rect = card.getBoundingClientRect();
                     const cardCenter = rect.top + rect.height / 2;
-                    const distance = Math.abs(cardCenter - viewportCenter);
 
-                    if (distance < closestDistance) {
-                        closestDistance = distance;
-                        closestCard = card;
+                    // Dacă centrul cardului este în trigger-zone, e candidat
+                    if (cardCenter >= triggerTop && cardCenter <= triggerBottom) {
+                        const dist = Math.abs(cardCenter - viewportCenter);
+
+                        if (dist < minOverlapDistance) {
+                            minOverlapDistance = dist;
+                            activeCard = card;
+                        }
                     }
                 });
 
-                // Remove all animations
-                projectCards.forEach(card => card.classList.remove('mobile-active'));
+                // Reset
+                projectCards.forEach(c => c.classList.remove('mobile-active'));
 
-                // Add animation only to the closest one
-                if (closestCard) {
-                    closestCard.classList.add('mobile-active');
+                // Activează doar cardul care se află în içuța de trigger
+                if (activeCard) {
+                    activeCard.classList.add('mobile-active');
                 }
             }
 
             window.addEventListener('scroll', updateActiveCard);
             window.addEventListener('resize', updateActiveCard);
 
-            updateActiveCard(); // initial call
+            updateActiveCard(); // initial
         }
-
-
     </script>
 </body>
 </html>
